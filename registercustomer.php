@@ -126,10 +126,16 @@
                                <h3>Welcome ! <br>
                                    Please Register now</h3>
                                <form class="row contact_form" action="processregistercustomer.php" method="post" novalidate="novalidate">
-                                   <div class="col-md-12 form-group p_star">
-                                       <input type="text" class="form-control" id="name" name="name" placeholder="Username">
+                                   <div class="col-md-6 form-group p_star">
+                                       <input type="text" class="form-control" id="name" name="first_name" placeholder="First Name">
                                    </div>
-                                   <div class="col-md-12 form-group p_star">
+                                   <div class="col-md-6 form-group p_star">
+                                       <input type="text" class="form-control" id="name" name="last_name" placeholder="Last Name">
+                                   </div>
+                                   <div class="col-md-6 form-group p_star">
+                                       <input type="email" class="form-control" id="name" name="email" placeholder="Email">
+                                   </div>
+                                   <div class="col-md-6 form-group p_star">
                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                                    </div>
                                    <div class="col-md-12 form-group">

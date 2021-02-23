@@ -125,7 +125,7 @@
               		session_start();
               		$each = mysqli_fetch_array($array);
               		$_SESSION['staff_id']     = $each['staff_id'];
-              		$_SESSION['first_name']    = $each['first_name'];
+              		$_SESSION['first_name']   = $each['first_name'];
                     $_SESSION['last_name']    = $each['last_name'];
 
               		header('location:index.php');
