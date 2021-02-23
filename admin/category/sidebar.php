@@ -12,13 +12,13 @@
     </a>
   </li>
   <li class="nav-item ">
-    <a class="nav-link" href="staff/">
+    <a class="nav-link" href="../staff/">
       <i class="material-icons">content_paste</i>
       <p>List Staffs</p>
     </a>
   </li>
   <li class="nav-item ">
-    <a class="nav-link" href="../category/">
+    <a class="nav-link" href="#">
       <i class="material-icons">camera_alt</i>
       <p>List Categories</p>
     </a>
@@ -30,7 +30,7 @@
     </a>
   </li>
   <li class="nav-item ">
-    <a class="nav-link" href="../managecustomer/">
+    <a class="nav-link" href="../customer/">
       <i class="material-icons">list_alt</i>
       <p>List Customers</p>
     </a>
