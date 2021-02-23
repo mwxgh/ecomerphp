@@ -127,22 +127,30 @@
                                    Please Register now</h3>
                                <form class="row contact_form" action="processregistercustomer.php" method="post" novalidate="novalidate">
                                    <div class="col-md-6 form-group p_star">
-                                       <input type="text" class="form-control" id="name" name="first_name" placeholder="First Name">
+                                       <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
                                    </div>
                                    <div class="col-md-6 form-group p_star">
-                                       <input type="text" class="form-control" id="name" name="last_name" placeholder="Last Name">
+                                       <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
                                    </div>
-                                   <div class="col-md-6 form-group p_star">
-                                       <input type="email" class="form-control" id="name" name="email" placeholder="Email">
+                                   <div class="col-md-12 form-group p_star">
+                                       <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                                    </div>
-                                   <div class="col-md-6 form-group p_star">
+                                   <div class="col-md-12 form-group p_star">
                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                                    </div>
+                                   <div class="col-md-12 form-group p_star">
+                                       <input type="number" class="form-control" id="telnum" name="telnum" placeholder="Telephone Number">
+                                   </div>
+                                   <div class="col-md-12 form-group p_star">
+                                       <select class="form-control" name="gender">
+                                           <option value="1">Male</option>
+                                           <option value="0">Female</option>
+                                       </select>
+                                   </div>
+                                   <div class="col-md-12 form-group p_star">
+                                       <textarea name="address" rows="6" cols="40"></textarea>
+                                   </div>
                                    <div class="col-md-12 form-group">
-                                       <div class="creat_account d-flex align-items-center">
-                                           <input type="checkbox" id="f-option" name="selector">
-                                           <label for="f-option">Remember me</label>
-                                       </div>
                                        <button type="submit" value="submit" class="btn_3">
                                            register
                                        </button>
