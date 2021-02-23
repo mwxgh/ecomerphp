@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION['user_name']) || $_SESSION['user_type']!= 2 ){
-	header('location:../login.php?error=Đăng nhập vào đã nhé');
+if(!isset($_SESSION['staff_level'])){
+	header('location:../loginstaff.php?error=Vui lòng đăng nhập lại !');
 	exit();
 }
 ?>

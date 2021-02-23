@@ -14,7 +14,7 @@ if($count==1){
 	$_SESSION['staff_id']     = $each['staff_id'];
 	$_SESSION['first_name']    = $each['first_name'];
     $_SESSION['last_name']    = $each['last_name'];
-	$_SESSION['level'] = $each['level'];
+	$_SESSION['staff_level'] = $each['staff_level'];
 
 	if(isset($_POST['remember_login'])){
 		setcookie('staff_id',$each['staff_id'],time()+86400*60);

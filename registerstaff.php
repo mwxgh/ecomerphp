@@ -147,7 +147,7 @@
                                                <option value="0">Female</option>
                                            </select>
                                        </div>
-                                       <input type="hidden" name="level" value="1">
+                                       <input type="hidden" name="level" value="0">
                                        <div class="col-md-12 form-group p_star">
                                            <textarea name="address" rows="6" cols="40"></textarea>
                                        </div>
