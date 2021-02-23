@@ -34,7 +34,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">Brands Manage</a>
+            <a class="navbar-brand" href="javascript:;">Staffs Manage</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -52,7 +52,7 @@
                 </button>
               </div>
             </form>
-            <?php require_once 'navbar.php' ?>
+                <?php require_once 'navbar.php' ?>
           </div>
         </div>
       </nav>
@@ -65,144 +65,73 @@
                   <div class="card-header card-header-primary">
                       <div class="row">
                           <div class="col-md-10">
-                              <h4 class="card-title ">Brands</h4>
+                              <h4 class="card-title ">Staffs</h4>
                           </div>
                           <div class="col-md-2">
-                              <a href="addbrand.php">
-                                  <h5 class="card-category">Add Brand + </h5>
+                              <a href="addstaff.php">
+                                  <h5 class="card-category">Add Staff + </h5>
                               </a>
                           </div>
                       </div>
-
-
                   </div>
+    <?php
+	require_once '../includes/dbconnect.php';
+	$sql="select * from users where user_type = 2" ;
+	$array=mysqli_query($connect,$sql);
+	?>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table">
                         <thead class=" text-primary">
                           <th>
-                            ID
+                              ID
                           </th>
                           <th>
-                            Name
+                              Name
                           </th>
                           <th>
-                            Country
+                              Username
                           </th>
                           <th>
-                            City
+                              Telephone Number
                           </th>
                           <th>
-                            Salary
+                              Email
+                          </th>
+                          <th>
+                              Gender
                           </th>
                         </thead>
+                        <?php foreach ($array as $each): ?>
                         <tbody>
                           <tr>
                             <td>
-                              1
+                              <?php echo $each['user_id']; ?>
                             </td>
                             <td>
-                              Dakota Rice
+                              <?php echo $each['first_name']; ?><?php echo $each['last_name']; ?>
                             </td>
                             <td>
-                              Niger
+                              <?php echo $each['user_name']; ?>
                             </td>
                             <td>
-                              Oud-Turnhout
+                              <?php echo $each['tel_num']; ?>
                             </td>
                             <td class="text-primary">
-                              $36,738
+                              <?php echo $each['email']; ?>
+                            </td>
+                            <td>
+  			                  <?php echo $each['gender']; ?>
                             </td>
                           </tr>
-                          <tr>
-                            <td>
-                              2
-                            </td>
-                            <td>
-                              Minerva Hooper
-                            </td>
-                            <td>
-                              Curaçao
-                            </td>
-                            <td>
-                              Sinaai-Waas
-                            </td>
-                            <td class="text-primary">
-                              $23,789
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              3
-                            </td>
-                            <td>
-                              Sage Rodriguez
-                            </td>
-                            <td>
-                              Netherlands
-                            </td>
-                            <td>
-                              Baileux
-                            </td>
-                            <td class="text-primary">
-                              $56,142
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              4
-                            </td>
-                            <td>
-                              Philip Chaney
-                            </td>
-                            <td>
-                              Korea, South
-                            </td>
-                            <td>
-                              Overland Park
-                            </td>
-                            <td class="text-primary">
-                              $38,735
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              5
-                            </td>
-                            <td>
-                              Doris Greene
-                            </td>
-                            <td>
-                              Malawi
-                            </td>
-                            <td>
-                              Feldkirchen in Kärnten
-                            </td>
-                            <td class="text-primary">
-                              $63,542
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              6
-                            </td>
-                            <td>
-                              Mason Porter
-                            </td>
-                            <td>
-                              Chile
-                            </td>
-                            <td>
-                              Gloucester
-                            </td>
-                            <td class="text-primary">
-                              $78,615
-                            </td>
-                          </tr>
+
                         </tbody>
+                         <?php endforeach ?>
                       </table>
+
                     </div>
                   </div>
+    <?php mysqli_close($connect); ?>
                 </div>
               </div>
             </div>

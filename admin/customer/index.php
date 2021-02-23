@@ -34,7 +34,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">Staffs Manage</a>
+            <a class="navbar-brand" href="javascript:;">Customers Manage</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -52,7 +52,7 @@
                 </button>
               </div>
             </form>
-                <?php require_once 'navbar.php' ?>
+            <?php require_once 'navbar.php' ?>
           </div>
         </div>
       </nav>
@@ -65,20 +65,20 @@
                   <div class="card-header card-header-primary">
                       <div class="row">
                           <div class="col-md-10">
-                              <h4 class="card-title ">Staffs</h4>
+                              <h4 class="card-title ">Customers</h4>
                           </div>
                           <div class="col-md-2">
-                              <a href="addstaff.php">
-                                  <h5 class="card-category">Add Staff + </h5>
+                              <a href="addcustomer.php">
+                                  <h5 class="card-category">Add Customer + </h5>
                               </a>
                           </div>
                       </div>
                   </div>
-    <?php
-	require_once '../dbconnect.php';
-	$sql="select * from users where user_type = 2" ;
-	$array=mysqli_query($connect,$sql);
-	?>
+              <?php
+              	require_once '../includes/dbconnect.php';
+              	$sql="select * from users where user_type = 3" ;
+              	$array=mysqli_query($connect,$sql);
+              	?>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table">
@@ -131,7 +131,7 @@
 
                     </div>
                   </div>
-    <?php mysqli_close($connect); ?>
+                  <?php mysqli_close($connect); ?>
                 </div>
               </div>
             </div>

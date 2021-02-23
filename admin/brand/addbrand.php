@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8"/>
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -18,7 +18,7 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="assets/demo/demo.css" rel="stylesheet" />
 </head>
-
+<?php require_once '../checkadmin.php'; ?>
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
@@ -34,7 +34,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">Customers Manage</a>
+            <a class="navbar-brand" href="javascript:;">Brands Manage</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -43,15 +43,6 @@
             <span class="navbar-toggler-icon icon-bar"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end">
-            <form class="navbar-form">
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                  <i class="material-icons">search</i>
-                  <div class="ripple-container"></div>
-                </button>
-              </div>
-            </form>
             <?php require_once 'navbar.php' ?>
           </div>
         </div>
@@ -63,75 +54,22 @@
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header card-header-primary">
-                      <div class="row">
-                          <div class="col-md-10">
-                              <h4 class="card-title ">Customers</h4>
-                          </div>
-                          <div class="col-md-2">
-                              <a href="addcustomer.php">
-                                  <h5 class="card-category">Add Customer + </h5>
-                              </a>
-                          </div>
-                      </div>
+                    <h4 class="card-title">Add Brand</h4>
                   </div>
-              <?php
-              	require_once '../dbconnect.php';
-              	$sql="select * from users where user_type = 3" ;
-              	$array=mysqli_query($connect,$sql);
-              	?>
                   <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table">
-                        <thead class=" text-primary">
-                          <th>
-                              ID
-                          </th>
-                          <th>
-                              Name
-                          </th>
-                          <th>
-                              Username
-                          </th>
-                          <th>
-                              Telephone Number
-                          </th>
-                          <th>
-                              Email
-                          </th>
-                          <th>
-                              Gender
-                          </th>
-                        </thead>
-                        <?php foreach ($array as $each): ?>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <?php echo $each['user_id']; ?>
-                            </td>
-                            <td>
-                              <?php echo $each['first_name']; ?><?php echo $each['last_name']; ?>
-                            </td>
-                            <td>
-                              <?php echo $each['user_name']; ?>
-                            </td>
-                            <td>
-                              <?php echo $each['tel_num']; ?>
-                            </td>
-                            <td class="text-primary">
-                              <?php echo $each['email']; ?>
-                            </td>
-                            <td>
-  			                  <?php echo $each['gender']; ?>
-                            </td>
-                          </tr>
-
-                        </tbody>
-                         <?php endforeach ?>
-                      </table>
-
-                    </div>
+                      <form>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Brand Title</label>
+                              <input type="text" name="brand_title" class="form-control">
+                            </div>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary pull-right">Add</button>
+                        <div class="clearfix"></div>
+                      </form>
                   </div>
-                  <?php mysqli_close($connect); ?>
                 </div>
               </div>
             </div>
