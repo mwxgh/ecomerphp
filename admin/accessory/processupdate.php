@@ -1,5 +1,5 @@
 <?php
-require_once '../checkadmin.php';
+// require_once '../checkadmin.php';
 $access_id=$_POST['access_id'];
 $access_title=$_POST['access_title'];
 

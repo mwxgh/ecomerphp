@@ -1,5 +1,5 @@
 <?php
- require_once '../checkadmin.php';
+ // require_once '../checkadmin.php';
 $access_id = $_GET['access_id'];
 
 require_once '../../includes/dbconnect.php';

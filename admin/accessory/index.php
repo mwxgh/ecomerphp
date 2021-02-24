@@ -80,8 +80,8 @@
                                 <td><?php echo $access['access_id']?></td>
                                 <td><?php echo $access['access_title']?></td>
                                 <td>
-                                    <a href="update.php?access_id=<?php echo $each['access_id']?>">Sửa</a>/
-                                    <a href="delete.php?access_id=<?php echo $each['access_id']?>">Xóa</a>
+                                    <a href="update.php?access_id=<?php echo $access['access_id']?>">Sửa</a>/
+                                    <a href="delete.php?access_id=<?php echo $access['access_id']?>">Xóa</a>
                                 </td>
                             </tr>
                             <?php endforeach ?>

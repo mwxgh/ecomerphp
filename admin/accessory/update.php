@@ -37,13 +37,20 @@
                     <h4 class="card-title">Update Accessory</h4>
                   </div>
                   <div class="card-body">
+                      <?php
+                    	require_once '../../includes/dbconnect.php';
+                    	$access_id=$_GET['access_id'];
+                    	$sql="select * from accessories where access_id='$access_id'" ;
+                    	$array=mysqli_query($connect,$sql);
+                    	$access=mysqli_fetch_array($array);
+                    	?>
                     <form action="processupdate.php" method="post">
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                              <input type="hidden" name="access_id" value="<?php echo $each['brand_id'] ?>">
-                            <label class="bmd-label-floating">Accessory Title</label>
-                            <input type="text" name="access_title" class="form-control" value="<?php echo $each['brand_title'] ?>">
+                              <input type="hidden" name="access_id" value="<?php echo $access['access_id'] ?>">
+                            <label class="bmd-label-floating"><?php echo $access['access_title'] ?></label>
+                            <input type="text" name="access_title" class="form-control" value="">
                           </div>
                         </div>
                       </div>
