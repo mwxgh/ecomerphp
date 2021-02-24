@@ -1,7 +1,7 @@
 <?php
 require_once '../checkadmin.php';
 
-$$first_name=$_POST['first_name'];
+$first_name=$_POST['first_name'];
 $last_name=$_POST['last_name'];
 $email=$_POST['email'];
 $password=$_POST['password'];
@@ -10,7 +10,7 @@ $gender=$_POST['gender'];
 $address=$_POST['address'];
 $images = $_FILES['images'];
 
-$array     = explode('/', $image['type']);
+$array     = explode('/', $images['type']);
 $file_type = $array[1];
 $imagesname=strtotime("now").".$file_type";
 

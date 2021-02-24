@@ -73,7 +73,7 @@
                               Email
                           </th>
                           <th>
-                              Telephone Number
+                              Phone Number
                           </th>
                           <th>
                               Gender
@@ -93,7 +93,7 @@
                               <?php echo $customer['customer_id'] ?>
                             </td>
                             <td>
-                              <?php echo $customer['first_name'] ?><?php echo $customer['last_name'] ?>
+                              <?php echo $customer['first_name'] ?> &nbsp; <?php echo $customer['last_name'] ?>
                             </td>
                             <td>
                               <?php echo $customer['customer_email'] ?>
@@ -102,7 +102,13 @@
                               <?php echo $customer['customer_tel'] ?>
                             </td>
                             <td>
-                              <?php echo $customer['customer_gender'] ?>
+                                <?php if ($customer['customer_gender']==1
+                                    ) {
+                                      echo "Nam";
+                                    } else {
+                                      echo "Nữ";
+                                    }
+                                     ?>
                             </td>
                             <td>
   			                  <?php echo $customer['customer_address'] ?>

@@ -83,7 +83,7 @@
                         <div class="col-md-6">
                           <div class="">
                              <label class="bmd-label-floating">Image Profile</label> &emsp;
-                               <input type="file" name="images" accept="image/*">
+                               <input type="file" name="images" accept="images/*">
                           </div>
                         </div>
                       </div>

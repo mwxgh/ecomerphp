@@ -47,16 +47,17 @@
                     	?>
                         <form action="processupdate.php" method="post" enctype="multipart/form-data">
                           <div class="row">
+                              <input type="hidden" name="customer_id" value="<?php echo $customer['customer_id'] ?>">
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="bmd-label-floating">First Name</label>
-                                <input type="text" name="first_name" class="form-control">
+                                <input type="text" name="first_name" class="form-control" value="<?php echo $customer['first_name'] ?>">
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="bmd-label-floating">Last Name</label>
-                                <input type="text" name="last_name" class="form-control">
+                                <input type="text" name="last_name" class="form-control"  value="<?php echo $customer['last_name'] ?>">
                               </div>
                             </div>
                           </div>
@@ -64,28 +65,37 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="bmd-label-floating">Email</label>
-                                <input type="email" name="email" class="form-control">
+                                <input type="email" name="email" class="form-control"  value="<?php echo $customer['customer_email'] ?>">
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label class="bmd-label-floating">Telephone Number</label>
-                                <input type="number" name="telnum" class="form-control">
+                                <label class="bmd-label-floating">Phone Number</label>
+                                <input type="number" name="telnum" class="form-control"  value="<?php echo $customer['customer_tel'] ?>">
                               </div>
                             </div>
                           </div>
                           <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                               <div class="form-group">
                                 <label class="bmd-label-floating">Gender</label> &emsp;
-                                    <input type="radio" name="gender" value="1" checked> Male &emsp;
-    		                        <input type="radio" name="gender" value="0"> Female
+                                    <input type="radio" name="gender" value="1" <?php if ($customer['customer_gender']==1)echo "checked"?>> Male &emsp;
+    		                        <input type="radio" name="gender" value="0" <?php if ($customer['customer_gender']==0)echo "checked"?>> Female
+                              </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                              <div class="">
+                                 <label class="bmd-label-floating">Former Image Profile</label> &emsp;
+                                    <img src="../../images/<?php echo $customer['image'] ?>" height='200'>
+                                   <input type="hidden" name="preimages" value="<?php echo $customer['image'] ?>">
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="">
-                                 <label class="bmd-label-floating">Image Profile</label> &emsp;
-                                   <input type="file" name="images" accept="image/*">
+                                 <label class="bmd-label-floating">New Image Profile</label> &emsp;
+                                   <input type="file" name="newimages" accept="images/*">
                               </div>
                             </div>
                           </div>
@@ -94,8 +104,8 @@
                               <div class="form-group">
                                 <label>Address</label>
                                 <div class="form-group">
-                                  <label class="bmd-label-floating"> Detail address for easy contact</label>
-                                  <textarea class="form-control" name="address" rows="6"></textarea>
+                                  <!-- <label class="bmd-label-floating"></label> -->
+                                  <textarea class="form-control" name="address" rows="6" value="<?php echo $customer['customer_address'] ?>" ></textarea>
                                 </div>
                               </div>
                             </div>
@@ -116,12 +126,6 @@
                     <div class="card-body">
                       <h6 class="card-category text-gray"><?php echo $customer['first_name'] ?> <?php echo $customer['last_name'] ?></h6>
                       <h4 class="card-title"><?php echo $customer['customer_email'] ?></h4>
-                      <p class="card-description">
-                        Telephone number : <?php echo $customer['customer_tel'] ?>
-                      </p>
-                      <p class="card-description">
-                        Telephone gender : <?php echo $customer['customer_tel'] ?>
-                      </p>
                     </div>
                   </div>
                 </div>
