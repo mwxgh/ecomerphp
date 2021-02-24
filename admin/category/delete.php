@@ -1,5 +1,5 @@
 <?php
- require_once '../checkadmin.php';
+ // require_once '../checkadmin.php';
 $cat_id = $_GET['cat_id'];
 
 require_once '../../includes/dbconnect.php';

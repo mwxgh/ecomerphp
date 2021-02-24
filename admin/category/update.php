@@ -37,13 +37,20 @@
                     <h4 class="card-title">Update Category</h4>
                   </div>
                   <div class="card-body">
+                      <?php
+                    	require_once '../../includes/dbconnect.php';
+                    	$cat_id=$_GET['cat_id'];
+                    	$sql="select * from categories where cat_id='$cat_id'" ;
+                    	$array=mysqli_query($connect,$sql);
+                    	$category=mysqli_fetch_array($array);
+                    	?>
                     <form action="processupdate.php" method="post">
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                              <input type="hidden" name="cat_id" value="<?php echo $each['cat_id'] ?>">
-                            <label class="bmd-label-floating">Category Title</label>
-                            <input type="text" name="cat_title" class="form-control" value="<?php echo $each['cat_title'] ?>">
+                              <input type="hidden" name="cat_id" value="<?php echo $category['cat_id'] ?>">
+                            <label class="bmd-label-floating"><?php echo $category['cat_title'] ?></label>
+                            <input type="text" name="cat_title" class="form-control" value="">
                           </div>
                         </div>
                       </div>

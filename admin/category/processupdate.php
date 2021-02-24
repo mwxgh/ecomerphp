@@ -1,5 +1,5 @@
 <?php
-require_once '../checkadmin.php';
+// require_once '../checkadmin.php';
 $cat_id=$_POST['cat_id'];
 $cat_title=$_POST['cat_title'];
 

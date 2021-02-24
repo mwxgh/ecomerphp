@@ -82,8 +82,8 @@
                                 <td><?php echo $category['cat_id']?></td>
                                 <td><?php echo $category['cat_title']?></td>
                                 <td>
-                                    <a href="update.php?cat_id=<?php echo $each['cat_id']?>">Sửa</a>/
-                                    <a href="delete.php?cat_id=<?php echo $each['cat_id']?>">Xóa</a>
+                                    <a href="update.php?cat_id=<?php echo $category['cat_id']?>">Sửa</a>/
+                                    <a href="delete.php?cat_id=<?php echo $category['cat_id']?>">Xóa</a>
                                 </td>
                             </tr>
                             <?php endforeach ?>
