@@ -37,7 +37,7 @@
                     <h4 class="card-title">Add Customer</h4>
                   </div>
                   <div class="card-body">
-                    <form action="processadd.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                    <form action="processadd.php" method="post" enctype="multipart/form-data">
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
@@ -56,7 +56,7 @@
                         <div class="col-md-4">
                           <div class="form-group">
                             <label class="bmd-label-floating">Email</label>
-                            <input type="text" name="email" class="form-control">
+                            <input type="email" name="email" class="form-control">
                           </div>
                         </div>
                         <div class="col-md-4">
@@ -68,7 +68,7 @@
                         <div class="col-md-4">
                           <div class="form-group">
                             <label class="bmd-label-floating">Telephone Number</label>
-                            <input type="number" name="tel_num" class="form-control">
+                            <input type="number" name="telnum" class="form-control">
                           </div>
                         </div>
                       </div>
@@ -80,12 +80,12 @@
 		                        <input type="radio" name="gender" value="0"> Female
                           </div>
                         </div>
-                        <!-- <div class="col-md-6">
+                        <div class="col-md-6">
                           <div class="">
                              <label class="bmd-label-floating">Image Profile</label> &emsp;
-                               <input type="file" name="image" accept="image/*">
+                               <input type="file" name="images" accept="image/*">
                           </div>
-                        </div> -->
+                        </div>
                       </div>
                       <div class="row">
                         <div class="col-md-12">
