@@ -6,12 +6,6 @@
     </a>
   </li>
   <li class="nav-item ">
-    <a class="nav-link" href="../user/">
-      <i class="material-icons">person</i>
-      <p>User Profile</p>
-    </a>
-  </li>
-  <li class="nav-item ">
     <a class="nav-link" href="../staff/">
       <i class="material-icons">content_paste</i>
       <p>List Staffs</p>
@@ -31,13 +25,13 @@
   </li>
   <li class="nav-item ">
     <a class="nav-link" href="../accessory/">
-      <i class="material-icons">camera_alt</i>
+      <i class="material-icons">list_alt</i>
       <p>List Accessories</p>
     </a>
   </li>
   <li class="nav-item ">
     <a class="nav-link" href="../customer/">
-      <i class="material-icons">list_alt</i>
+      <i class="material-icons">person</i>
       <p>List Customers</p>
     </a>
   </li>
