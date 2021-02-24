@@ -80,8 +80,8 @@
                                 <td><?php echo $brand['brand_id']?></td>
                                 <td><?php echo $brand['brand_title']?></td>
                                 <td>
-                                    <a href="update.php?brand_id=<?php echo $each['brand_id']?>">Sửa</a>/
-                                    <a href="delete.php?brand_id=<?php echo $each['brand_id']?>">Xóa</a>
+                                    <a href="update.php?brand_id=<?php echo $brand['brand_id']?>">Sửa</a>/
+                                    <a href="delete.php?brand_id=<?php echo $brand['brand_id']?>">Xóa</a>
                                 </td>
                             </tr>
                             <?php endforeach ?>

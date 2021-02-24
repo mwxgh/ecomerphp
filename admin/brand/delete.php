@@ -1,5 +1,5 @@
 <?php
- require_once '../checkadmin.php';
+ // require_once '../checkadmin.php';
 $brand_id = $_GET['brand_id'];
 
 require_once '../../includes/dbconnect.php';

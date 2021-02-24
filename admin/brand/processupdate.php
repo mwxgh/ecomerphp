@@ -1,5 +1,5 @@
 <?php
-require_once '../checkadmin.php';
+// require_once '../checkadmin.php';
 $brand_id=$_POST['brand_id'];
 $brand_title=$_POST['brand_title'];
 

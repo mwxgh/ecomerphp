@@ -37,13 +37,20 @@
                     <h4 class="card-title">Update Brand</h4>
                   </div>
                   <div class="card-body">
+                      <?php
+                    	require_once '../../includes/dbconnect.php';
+                    	$brand_id=$_GET['brand_id'];
+                    	$sql="select * from brands where brand_id='$brand_id'" ;
+                    	$array=mysqli_query($connect,$sql);
+                    	$brand=mysqli_fetch_array($array);
+                    	?>
                     <form action="processupdate.php" method="post">
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                              <input type="hidden" name="brand_id" value="<?php echo $each['brand_id'] ?>">
-                            <label class="bmd-label-floating">Brand Title</label>
-                            <input type="text" name="brand_title" class="form-control" value="<?php echo $each['brand_title'] ?>">
+                              <input type="hidden" name="brand_id" value="<?php echo $brand['brand_id'] ?>">
+                            <label class="bmd-label-floating"><?php echo $brand['brand_title'] ?></label>
+                            <input type="text" name="brand_title" class="form-control" value="">
                           </div>
                         </div>
                       </div>
