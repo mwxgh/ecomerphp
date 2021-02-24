@@ -30,6 +30,12 @@
     </a>
   </li>
   <li class="nav-item ">
+    <a class="nav-link" href="../accessory/">
+      <i class="material-icons">camera_alt</i>
+      <p>List Accessories</p>
+    </a>
+  </li>
+  <li class="nav-item ">
     <a class="nav-link" href="../customer/">
       <i class="material-icons">list_alt</i>
       <p>List Customers</p>

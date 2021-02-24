@@ -24,13 +24,13 @@
     </a>
   </li>
   <li class="nav-item ">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="../brand/">
       <i class="material-icons">camera</i>
       <p>List Brands</p>
     </a>
   </li>
   <li class="nav-item ">
-    <a class="nav-link" href="../accessory/">
+    <a class="nav-link" href="#">
       <i class="material-icons">camera_alt</i>
       <p>List Accessories</p>
     </a>

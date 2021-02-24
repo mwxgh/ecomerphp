@@ -1,10 +1,10 @@
 <?php
  require_once '../checkadmin.php';
-$brand_id = $_GET['brand_id'];
+$access_id = $_GET['access_id'];
 
 require_once '../../includes/dbconnect.php';
-$sql= " delete from brands
-where brand_id = '$brand_id'";
+$sql= " delete from accessories
+where access_id = '$access_id'";
 mysqli_query($connect,$sql);
 mysqli_close($connect);
 header('location:index.php');
