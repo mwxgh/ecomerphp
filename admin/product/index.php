@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-    Film Cameras | Admin
-  </title>
-  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <!-- CSS Files -->
-  <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../assets/demo/demo.css" rel="stylesheet" />
-</head>
-
+ <?php require_once 'header.php'; ?>
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
@@ -26,56 +6,7 @@
           Film Cameras | Admin
         </a></div>
       <div class="sidebar-wrapper">
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" href="../index.php">
-                <i class="material-icons">dashboard</i>
-                <p>Dashboard</p>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../user/">
-                <i class="material-icons">person</i>
-                <p>User Profile</p>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../staff/">
-                <i class="material-icons">content_paste</i>
-                <p>List Staffs</p>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../category/">
-                <i class="material-icons">camera_alt</i>
-                <p>List Categories</p>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../brand/">
-                <i class="material-icons">camera</i>
-                <p>List Brands</p>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../customer/">
-                <i class="material-icons">list_alt</i>
-                <p>List Customers</p>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../invoice/">
-                <i class="material-icons">local_grocery_store</i>
-                <p>List Invoices</p>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="#">
-                <i class="material-icons">camera_roll</i>
-                <p>List Products</p>
-              </a>
-            </li>
-          </ul>
+            <?php require_once 'sidebar.php'; ?>
       </div>
     </div>
     <div class="main-panel">
@@ -94,7 +25,7 @@
           <div class="collapse navbar-collapse justify-content-end">
             <form class="navbar-form">
               <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
+                <input type="search" name="search_product" value="<?php echo $search_product ?>" class="form-control" placeholder="Search...">
                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
                   <i class="material-icons">search</i>
                   <div class="ripple-container"></div>
@@ -117,203 +48,129 @@
                               <h4 class="card-title ">Products</h4>
                           </div>
                           <div class="col-md-2">
-                              <a href="addproduct.php">
+                              <a href="add.php">
                                   <h5 class="card-category">Add Product + </h5>
                               </a>
                           </div>
                       </div>
-
-
                   </div>
+              <?php
+              	require_once '../../includes/dbconnect.php';
+                $search_product = '';
+                    if(isset($_GET['search_product'])){
+                    $search_product = $_GET['search_product'];
+                    }
+                    $sql ="select
+                    products.*,
+                    brands.brand_title as brand_title
+                    categories.cat_title as cat_title
+                    accessories.access_title as access_title
+                    from products
+                    join brands on product.brand_id = brands.brand_id
+                    join categories on product.cat_id = categories.cat_id
+                    join accessories on product_access_id = accessories.access_id
+                    where products.product_name like '%$search_product%'";
+                    $array= mysqli_query($connect,$sql);
+                    $total_product = mysqli_num_rows($array);
+
+                    $limit = 8;
+
+                    $current_page = 1;
+                    if(isset($_GET['page'])){
+                    	$current_page = $_GET['page'];
+                    }
+                    $offset = ($current_page - 1) * $limit;
+
+
+                    $total_page = ceil($total_product/$limit);
+
+                    $sql = "$sql
+                    limit $limit offset $offset";
+                    $array = mysqli_query($connect,$sql);
+
+                mysqli_close($connect);
+              	?>
                   <div class="card-body">
+                      <?php for($i=1;$i<=$total_page;$i++){ ?>
+				<a href="?page=<?php echo $i ?>&search_product=<?php echo $search_product ?>">
+					<?php echo $i ?>
+				</a>
+			         <?php } ?>
                     <div class="table-responsive">
                       <table class="table">
                         <thead class=" text-primary">
                           <th>
-                            ID
+                              ID
                           </th>
                           <th>
-                            Name
+                              Name
                           </th>
                           <th>
-                            Country
+                              Category
                           </th>
                           <th>
-                            City
+                              Brand
                           </th>
                           <th>
-                            Salary
+                              Accessory
+                          </th>
+                          <th>
+                              Price
+                          </th>
+                          <th>
+                              Image
+                          </th>
+                          <th>
+                              Description
+                          </th>
+                          <th>
+                              Action
                           </th>
                         </thead>
+
                         <tbody>
+                            <?php foreach ($array as $each): ?>
                           <tr>
                             <td>
-                              1
+                              <?php echo $each['product_id'] ?>
                             </td>
                             <td>
-                              Dakota Rice
+                              <?php echo $each['product_name'] ?>
                             </td>
                             <td>
-                              Niger
+                              <?php echo $each['cat_title'] ?>
                             </td>
                             <td>
-                              Oud-Turnhout
+                              <?php echo $each['brand_title'] ?>
                             </td>
-                            <td class="text-primary">
-                              $36,738
+                            <td>
+                                <?php echo $each['access_title'] ?>
+                            </td>
+                            <td>
+                                <?php echo $each['product_price'] ?>
+                            </td>
+                            <td>
+  			                  <img src="../../image/<?php echo $each['product_images']; ?>"height='200'>
+                            </td>
+                            <td>
+                                <?php echo $each['product_description'] ?>
+                            </td>
+                            <td>
+                                <a href="update.php?product_id=<?php echo $each['product_id']?>">Sửa</a>/
+                                <a href="delete.php?product_id=<?php echo $staff['product_id']?>">Xóa</a>
                             </td>
                           </tr>
-                          <tr>
-                            <td>
-                              2
-                            </td>
-                            <td>
-                              Minerva Hooper
-                            </td>
-                            <td>
-                              Curaçao
-                            </td>
-                            <td>
-                              Sinaai-Waas
-                            </td>
-                            <td class="text-primary">
-                              $23,789
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              3
-                            </td>
-                            <td>
-                              Sage Rodriguez
-                            </td>
-                            <td>
-                              Netherlands
-                            </td>
-                            <td>
-                              Baileux
-                            </td>
-                            <td class="text-primary">
-                              $56,142
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              4
-                            </td>
-                            <td>
-                              Philip Chaney
-                            </td>
-                            <td>
-                              Korea, South
-                            </td>
-                            <td>
-                              Overland Park
-                            </td>
-                            <td class="text-primary">
-                              $38,735
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              5
-                            </td>
-                            <td>
-                              Doris Greene
-                            </td>
-                            <td>
-                              Malawi
-                            </td>
-                            <td>
-                              Feldkirchen in Kärnten
-                            </td>
-                            <td class="text-primary">
-                              $63,542
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              6
-                            </td>
-                            <td>
-                              Mason Porter
-                            </td>
-                            <td>
-                              Chile
-                            </td>
-                            <td>
-                              Gloucester
-                            </td>
-                            <td class="text-primary">
-                              $78,615
-                            </td>
-                          </tr>
+                          <?php endforeach ?>
                         </tbody>
+
                       </table>
+
                     </div>
                   </div>
+                  <?php mysqli_close($connect); ?>
                 </div>
               </div>
             </div>
           </div>
       </div>
-      <footer class="footer">
-        <?php require_once 'footer.php'; ?>
-      </footer>
-    </div>
-  </div>
-
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!-- Plugin for the momentJs  -->
-  <script src="../assets/js/plugins/moment.min.js"></script>
-  <!--  Plugin for Sweet Alert -->
-  <script src="../assets/js/plugins/sweetalert2.js"></script>
-  <!-- Forms Validations Plugin -->
-  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
-  <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-  <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
-  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-  <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
-  <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-  <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
-  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-  <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
-  <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-  <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
-  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-  <script src="../assets/js/plugins/fullcalendar.min.js"></script>
-  <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-  <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="../assets/js/plugins/nouislider.min.js"></script>
-  <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-  <!-- Library for adding dinamically elements -->
-  <script src="../assets/js/plugins/arrive.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chartist JS -->
-  <script src="../assets/js/plugins/chartist.min.js"></script>
-  <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
-  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
-  <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
-  <script src="../assets/js/sidebar.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      md.initDashboardPageCharts();
-
-    });
-  </script>
-</body>
-
-</html>
+     <?php require_once 'footer.php'; ?>
